@@ -1,0 +1,125 @@
+:root {
+
+}
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: none;
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+body, html {
+	min-height: 100%;
+	width: 100%;
+}
+
+/* Main Styles */
+
+body {
+	background: #262626;
+	position: absolute;
+}
+.checkers-container {
+	width: 800px;
+	height: 800px;
+	background: url('../images/wood.jpg') center;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.checkers-desk {
+	background: url('../images/dark-wood.jfif') no-repeat center ;
+	width: 92%;
+	height: 92%;
+	position: relative;
+	left: 4%;
+	top: 4%;
+	counter-reset: numbers;
+}
+.row {
+	width: 100%;
+	height: 12.5%;
+	position: relative;
+	counter-reset: alphabet ;
+}
+.row::before {
+	counter-increment: numbers;
+	content: counter(numbers);
+	position: absolute;
+	top: 45%;
+	left:-20px;
+	color: #fff;
+	font: 700 18px sans-serif;
+;}
+.row:last-child .cell::after{
+	counter-increment: alphabet;
+	content: counter(alphabet, upper-alpha );
+	position: absolute;
+	bottom: -25px;
+	left:40%;
+	color: #fff;
+	font: 700 18px sans-serif;
+}
+.cell {
+	height: 100%;
+	width: 12.5%;
+	position: absolute;
+}
+.cell:nth-child(1) {
+	left: 0%;
+}
+.cell:nth-child(2) {
+	left: 12.5%;
+}
+.cell:nth-child(3) {
+	left: 25%;
+}
+.cell:nth-child(4) {
+	left: 37.5%;
+}
+.cell:nth-child(5) {
+	left: 50%;
+}
+.cell:nth-child(6) {
+	left: 62.5%;
+}
+.cell:nth-child(7) {
+	left: 75%;
+}
+.cell:nth-child(8) {
+	left: 87.5%;
+}
+[class*='checker-']::before {
+	content: '';
+	width: 80%;
+	height: 80%;
+	position: absolute;
+	left: 10%;
+	top: 10%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+}
+[class*='checker-']:hover::before {
+	transform: scale(1.1);
+}
+.checker-black::before {
+	background-image: url('../images/checker-black.png');
+}
+.checker-white::before {
+	background-image: url('../images/checker-white.png');
+}
+.row:nth-child(even) .cell:nth-child(even), .row:nth-child(odd) .cell:nth-child(odd){
+	background: rgba(255, 255, 255, .7);
+}
